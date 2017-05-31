@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <link rel="stylesheet" href="css/sgh.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $.fn.fullpage({
+                slidesColor: ['rgba(0,0,0,0.8)', '#EAEAEA', '#FDF6E1', '#F3F3F3', '#F9F3DC'],
+                anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+                menu: '#menu',
+                afterRender: function(){
+                    $('.screen-main span').each(function(){
+                        var $rel = $(this).attr('rel');
+                        var $arr = $rel.split(',');
+                        $(this).animate({
+                            left: $arr[2] + 'px',
+                            top: $arr[3] + 'px'
+                        }, 500);
+                    });
+                    $('.inner a').each(function(){
+                        var $rel = $(this).attr('rel');
+                        var $arr = $rel.split(',');
+                        $(this).animate({
+                            left: $arr[0] + 'px',
+                            top: $arr[1] + 'px'
+                        }, 500);
+                    });
+                },
+                afterLoad: function(anchorLink, index){
+                    if(index == 1){
+
+                        $('.screen-main span').each(function(){
+                            var $rel = $(this).attr('rel');
+                            var $arr = $rel.split(',');
+                            $(this).animate({
+                                left: $arr[2] + 'px',
+                                top: $arr[3] + 'px'
+                            }, 500);
+                        });
+                    }
+                    if(index == 2 || index == 3 || index == 4 ){
+
+                            $('.bar-inner:eq(0)').delay(200).animate({"width":"90%"})
+                            $('.bar-inner:eq(1)').delay(200).animate({"width":"80%" })
+                            $('.bar-inner:eq(2)').delay(200).animate({"width":"85%" })
+
+                               $('.line:eq(0)').delay(200).dequeue().animate({"width":"300" })
+                               $('.line:eq(1)').delay(200).dequeue().animate({"height":"300" })
+                               $('.line:eq(2)').delay(200).dequeue().animate({"width":"300" })
+                               $('.line:eq(3)').delay(200).dequeue().animate({"height":"300" })
+
+
+
+                        $('.inner').eq(index - 2).find('a').each(function(){
+                            var $rel = $(this).attr('rel');
+                            var $arr = $rel.split(',');
+                            $(this).animate({
+                                left: $arr[2] + 'px',
+                                top: $arr[3] + 'px'
+                            }, 500);
+                        });
+                    }
+                    if(index == 5){
+                        $('.zanzhu a').fadeIn(1000);
+                    }
+                },
+                onLeave: function(index, direction){
+                    if(index == 1){
+                        $('.screen-main span').each(function(){
+                            var $rel = $(this).attr('rel');
+                            var $arr = $rel.split(',');
+                            $(this).animate({
+                                left: $arr[0] + 'px',
+                                top: $arr[1] + 'px'
+                            }, 500);
+                        });
+                    }
+                    if(index == 2 || index == 3 || index == 4 ){
+
+                            $('.line:eq(0)').delay(200).dequeue().animate({"width":"0" })
+                            $('.line:eq(1)').delay(200).dequeue().animate({"height":"0" })
+                            $('.line:eq(2)').delay(200).dequeue().animate({"width":"0" })
+                            $('.line:eq(3)').delay(200).dequeue().animate({"height":"0" })
+
+
+                        $('.bar-inner').css({"width":"0%" })
+                        $('.inner').eq(index - 2).find('a').each(function(){
+                            var $rel = $(this).attr('rel');
+                            var $arr = $rel.split(',');
+                            $(this).animate({
+                                left: $arr[0] + 'px',
+                                top: $arr[1] + 'px'
+                            }, 500);
+                        });
+                    }
+                    if(index == 5){
+                        $('.zanzhu a').fadeOut(1000);
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1"><em>TOP</em></a></li>
+    <li data-menuanchor="page2"><a href="#page2"><em>Resume</em></a></li>
+    <li data-menuanchor="page3"><a href="#page3"><em>Works</em></a></li>
+    <li data-menuanchor="page4"><a href="#page4"><em>About</em></a></li>
+    <li data-menuanchor="page5"><a href="#page5"><em>Contact</em></a></li>
+</ul>
+
+<div class="section section1">
+    <div class="mask"></div>
+    <div class="screen-main">
+
+       <span class="ji1"  rel="-328,-589,400,360">姓名：</span>
+        <span class="ji2"  rel="1648,-487,530,360">畅润瑞</span>
+        <span class="year2"  rel="1686,-213,420,430">我的宣言：</span>
+        <span class="year0"  rel="-266,-189,600,440">只有不用心的人，没有做不成的事</span>
+        <div class="welcome-text">
+            <div class=" animated fadeInDownBig" id="title"><h2 >Hello, Welcome to <strong>RECTANGLE</strong></h2></div>
+            <div  class=" animated fadeIn"><p>Rectangle is free mobile template brought to you by template mo.com website. You can download, edit and use this layout for any purpose. Please tell your friends about our website. Thank you.</p>
+            </div>
+        </div>
+        <div class="grtx animated slideInLeft"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="social-inner inner">
+        <a class="soiteml so1" href="javascript:void(0)" rel="450,-175,450,21">RESUME</a>
+        <div class="jianshao">
+            <ul>
+                <li class="line"></li>
+                <li class="line"></li>
+                <li class="line"></li>
+                <li class="line"></li>
+            </ul>
+            <section class="res">
+                <div class="res_text">
+                    <h4>CSS College Larkana</h4>
+                    <em>
+                        <span>Masters Degree</span>
+                        <span>2013-2017</span>
+                    </em>
+                   <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp; ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
+                    </p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
+                    </p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;  Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
+                    </p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
+                    </p>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="famous-inner inner">
+        <a class="faitemr fa1" href="html/fk/html.html"  rel="90,-180,90,28">凡客</a>
+        <a class="faitemr fa2" href="html/xm/xiaomi.html" rel="90,-180,90,53">小米</a>
+        <a class="faitemr fa3" href="html/tm/tianmao.html"  rel="0,-180,70,73">天猫</a>
+        <a class="faiteml fa1" href="html/geren/index.html"  rel="1280,203,90,140">个人主页</a>
+
+        <a class="faiteml fa5" href="html/dzyx/dz.html" rel="1280,227,335,227">打字小游戏</a>
+        <a class="faiteml fa6" href="html/puke/puke.html" rel="1080,290,255,280">扑克牌</a>
+        <a class="faiteml fa7" href="html/other/五子棋.html" rel="-300,317,160,307,">五子棋</a>
+
+        <a class="faiteml fa8"  href="html/music/yinyue.html" rel="-300,533,149,540">音乐</a>
+        <a class="faiteml fa9" href="html/canvas/hb.html" rel="-300,563,149,568">画板</a>
+
+
+        <a class="faimg1 fmg" href="html/tm/tianmao.html" rel="200,-180,200,10"><img width="169" height="169" src="images/3.png"><div class="btn">天猫</div></a>
+        <a class="faimg2 fmg" href="html/puke/puke.html" rel="980,77,550,77"><img width="284" height="211" src="images/1.png"><div class="btn">扑克游戏</div></a>
+        <a class="faimg3 " href="javascript:void(0)" rel="980,366,450,366"><img width="491" height="328" src="images/xiaohuangren.png"></a>
+        <a class="faimg4 fmg" href="html/music/yinyue.html" rel="-300,387,149,387"><img width="160" height="136" src="images/2.png"><div class="btn">音乐</div></a>
+    </div>
+</div>
+
+<div class="section">
+    <div class="science-inner inner">
+        <a class="stiteml st4" href="javascript:void(0)" rel="0,-350,0,68">
+            <div class="box"style="width:948px;height:auto;margin-left:20px;margin-top: -20px">
+                <div class="about-text">
+                   <div class="animated fadeInDownBig "id="about"> <h3>ABOUT ME.</h3></div>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;I'm a passionate designer, ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore <br> et dolore magna aliqua. In 2015, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br> Duis aute irure dolor in reprehe in voluptate velit esse cillum dolore eu.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;I'm a passionate designer, ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore <br> et dolore magna aliqua. In 2015, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <br> Duis aute irure dolor in reprehe in voluptate velit esse cillum dolore eu.</p>
+                </div>
+                <!-- Skills -->
+                <div class="skills">
+                    <div class="single-progress-item">
+                        <h4>HTML</h4>
+                        <div class="progress-bar-style" data-progress="90"><div class="bar-inner" style="width:0%;"><span>90%</span></div></div>
+                    </div>
+                    <div class="single-progress-item">
+                        <h4>Javascript</h4>
+                        <div class="progress-bar-style" data-progress="80"><div class="bar-inner" style="width:0%"><span>80%</span></div></div>
+                    </div>
+                    <div class="single-progress-item">
+                        <h4>jQuery</h4>
+                        <div class="progress-bar-style" data-progress="85"><div class="bar-inner" style="width:0%"><span>85%</span></div></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+</div>
+
+
+
+<div class="section">
+    <div class="zanzhu">
+        <section class="contact-section spad" id="contact">
+
+                <div class="section-title">
+                   <h2> <a href="javascript:void(0)">GET IN TOUCH</a></h2>
+                    <p><a href="javascript:void(0)">Out believe has request not how comfort evident. Up delight cousins we feeling minutes. Genius has looked end piqued spring.Out believe has request not how comfort evident. Up delight cousins we feeling minutes. Genius has looked end piqued spring.</a></p>
+                </div>
+                <div class="row">
+                    <div class="col-l-5 col-m-5 col-s-6 col-xs-12">
+                        <ul class="con-info"><a href="">
+                            <li>
+                                <i class="iconfont icon-dianhua"></i>
+                                <span>Phone</span>
+                                <p>+1 (123) 456-7890</p>
+                            </li>
+                            <li>
+                                <i class="iconfont icon-email1"></i>
+                                <span>Email</span>
+                                <p>domain@gmail.com</p>
+                            </li>
+                            <li   class="rmargin-b">
+                                <i class="iconfont icon-ditu"></i>
+                                <span>Address</span>
+                                <p>A902, Crosswinds Apt, Western Road,<br> Brighton, East Sussex, Bath</p>
+                            </li></a>
+                        </ul>
+                    </div>
+                    <div class="col-l-7 col-m-7 col-s-6 col-xs-12 contact-left">
+                        <div id="form-chack"></div>
+                        <!-- Contact Form -->
+                        <form action="mail.php" id="contact-form" method="POST">
+
+                            <input type="text" name="name" id="name" required="" placeholder="Your Name*">
+
+                            <input type="email" name="email" id="email" required="" placeholder="Your Email*">
+
+                            <div class="send-btn-div">
+                                <textarea id="massage" name="massage" required="" placeholder="Your Massage*"></textarea>
+                                <button type="submit" class="send-btn"><i class="iconfont icon-iconfontfasong"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+        </section>
+    </div>
+</div>
+
+
+</body>
+</html>

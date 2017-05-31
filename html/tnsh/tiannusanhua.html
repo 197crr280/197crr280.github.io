@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+</head>
+<style>
+    div[class=point]{
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+    .circle{
+        border-radius: 50%;
+        position: absolute;
+    }
+    .circle:hover{
+        transform: scale(2,2);
+    }
+</style>
+<body>
+  <div class="point"></div>
+</body>
+</html>
+<script>
+    $(function () {
+        let point=$('.point').get(0);
+        const CW=$(window).outerWidth();
+        const CH=$(window).outerHeight();
+        for(let i=0;i<101;i++){
+            createCircle(i);
+        }
+        function createCircle(i) {
+            let widths=Math.floor(Math.random()*15+15);
+            let lefts=Math.random()*(CW-widths)-CW/2;
+            let tops=Math.random()*(CH-widths)-CH/2;
+            let r=Math.floor(Math.random()*256)
+            let g=Math.floor(Math.random()*256)
+            let b=Math.floor(Math.random()*256)
+
+            $('<div>').addClass('circle')
+              .css({width:widths,height:widths,background:`rgb(${r},${g},${b})`})
+              .delay(i*10)
+              .animate({left:lefts,top:tops})
+              .appendTo(point)
+        }
+    })
+</script>

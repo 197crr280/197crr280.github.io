@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <button>点击</button>
+</body>
+</html>
+<!--
+<script>
+   /* localStorage.setItem('name','zhangsan');//永久存在*/
+    console.log(localStorage.getItem('name'));
+   console.log(localStorage.key((0)));
+    let  button=document.getElementsByTagName('button')[0];
+
+   button.onclick=function () {
+    localStorage.removeItem('name')  ;//移除某个
+       localStorage.clear();//清除全部
+   }
+
+   /* cookie和本地存储 相互之间可以共享*/
+
+
+   sessionStorage.setItem('number',64);   /*页面之间不会共享 ，用法同localstorage*/
+</script>-->
+<script>
+    //json对象需要双引号 符合格式为""
+    localStorage.student=`[
+        {"name":"张三","sex":"女","age":"18","tall":"123456789"},
+        {"name":"李华","sex":"女","age":"18","tall":"123456789"},
+        {"name":"王明","sex":"男","age":"22","tall":"987654321"}
+    ]`;
+    /*JSON.stringify(localStorage.student);*/
+    let student=localStorage.student;
+    let json=JSON.parse(student);
+    json.push({"name":"zhangsan","sex":"女","age":"18","tall":"123456789"})
+    /*console.log(json[0]);*/
+    localStorage.student=JSON.stringify(json);
+</script>

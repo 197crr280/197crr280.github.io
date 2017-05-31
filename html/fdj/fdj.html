@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>	
+    *{
+    	margin: 0;
+    	padding: 0;
+    	list-style: none;
+    }
+   .smallbox{
+    	width: 234px;
+		height: 300px;
+    	border: 1px solid red;
+    	float: left;
+    	margin-right: 20px;
+    	position: relative;
+    }
+    .opacity{
+    	width: 100%;
+    	height: 100%;
+/*     	background: red; */
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    	z-index: 20;
+    }
+    .mask{
+       width: 120px;
+		height: 150px;
+		background: rgba(0, 0, 0, 0.5);
+		position: absolute;
+		left: 0;
+		top: 0;
+    }
+    .bigbox{
+    	width: 234px;
+		height: 300px;
+    	/* border: 1px solid blue; */
+    	float: left;
+		overflow: hidden;
+		position: relative;
+		opacity: 0;
+    }
+    .bigbox img{
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: block;
+    }
+    .smallbox img{
+    	width: 100%;
+    	height: 100%;
+    	display: block;
+    }
+    .pic{
+    	position: absolute;
+    	left: 0;
+    	top:320px;
+    	width: 234px;
+		height: auto;
+		overflow: hidden;
+    }
+    .pic li{
+    	width: 20%;
+    	margin-right: 10px;
+    	float: left;
+    	height: 40px;
+    }
+    .pic li img{
+    	width: 100%;
+    	height: 100%;
+    	display: block;
+    }
+    .hidden{
+    	display: none;
+    }
+    .show{
+    	display: block;
+    }
+    </style>
+    <body>
+    <div class="smallbox">
+    <div class="opacity"></div>
+    <div class="mask"></div><img src="22.jpg" alt=""></div>
+    <ul class="pic">
+    	<li> <img src="sp2.jpg" alt=""> </li>
+    	<li> <img src="sp3.jpg" alt=""> </li>
+    	<li> <img src="sp4.jpg" alt=""> </li>
+    	<li> <img src="sd.jpg" alt=""> </li>
+    </ul>
+    <div class="bigbox "><img src="22.jpg" alt=""></div>
+    </body>
+</html>
+<script src="functions.js"></script>
+<script>
+	let sbox=$('.smallbox')[0];
+	let bbox=$('.bigbox')[0];
+	let bimg=$('img',bbox)[0];
+	let mask=$('.mask')[0];
+	let opacity=$('.opacity')[0];
+	let pic=$('.pic')[0];
+	let lis=$('li',pic);
+	let imgs=$('img',sbox)[0];
+	let imgb=$('img',bbox)[0];
+	let liimg=$('img',pic);
+	// console.log(imgs.src);
+	let sw=sbox.offsetWidth,sh=sbox.offsetHeight,imgwidth=bimg.offsetWidth,imgheight=bimg.offsetHeight,mw=mask.offsetWidth,mh=mask.offsetHeight;
+	let maxX=sw-mw,maxY=sh-mh;
+	let bili=imgwidth/sw;
+	opacity.onmousemove=function(e) {
+		bbox.style.opacity='1';
+		let ox=e.offsetX-mw/2,oy=e.offsetY-mh/2;
+		if(ox>maxX){
+            ox=maxX;
+		}
+		if(ox<=0){
+            ox=0;
+		}
+		if(oy>maxY){
+            oy=maxY;
+		}
+		if(oy<=0){
+            oy=0;
+		}
+	  mask.style.left=ox+'px';
+	 mask.style.top=oy+'px';
+
+	 bimg.style.width=sw*sw/mw+'px';
+	 bimg.style.height=sh*sh/mh+'px';
+	 let bilix=imgwidth/sw;
+	 let biliy=imgheight/sh;
+	 bimg.style.left=-ox*bilix+'px';
+	 bimg.style.top=-oy*biliy+'px';
+	}
+   opacity.onmouseleave=function(){
+		bbox.style.opacity='0';
+     
+   }
+	for(let i=0;i<lis.length;i++){
+		lis[i].onclick=function(){
+			imgs.src=liimg[i].src;
+			imgb.src=liimg[i].src;
+		}
+	}
+</script>

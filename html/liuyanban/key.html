@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>博客</title>
+    </head>
+    <style>
+    *{
+    	margin: 0;
+    	padding: 0;
+    	list-style: none;
+    }
+    .content{
+    	width: 600px;
+    	height:auto;
+    	min-height: 300px;
+        background: #F2F2F5;
+        margin: auto;
+        box-sizing: border-box;
+        padding: 30px 15px;
+        margin-top: 20px;
+        box-shadow: 0 3px 10px #696E78;
+    }
+    .content p{
+    	padding-bottom: 8px;
+    	font-size: 20px;
+    }
+    .edit{
+    	width: 100%;
+    	height: auto;
+    	float: left;
+    }
+    .edit .message{
+    	float: right;
+    	font-size: 13px;
+    	margin-top: 4px;
+    	line-height: 30px;
+    	color: #ADB0B6;
+    }
+    .message span{
+    	color: #FF6700	;
+    }
+    button{
+    	float: right;
+    	border: none;
+    	margin:4px 10px;
+    	width: 60px;
+    	height:30px;
+    	background: #FFC09F;
+    	color: white;
+    	font-size: 14px;
+		border-radius: 3px;
+    }
+    button:hover{
+    	background: #ff6700;
+    }
+    textarea{
+    	width: 100%;
+    	height: auto;
+    	padding: 10px 10px;
+    	background: white;
+    	box-sizing: border-box;
+    	border:1px solid #CCCCCC;
+    	resize: none;
+    	outline-color: #FF6700;
+
+    }
+    .comment{
+    	width: 100%;
+    	height: auto;
+    	overflow: hidden;
+    }
+    .comment li{
+    	width: 100%;
+    	box-sizing: border-box;
+    	height: 80px;
+    	margin: auto;
+    	background: white;
+    	margin-top: 20px;
+    	border: 1px solid #ff6700;
+    	color: #333;
+    }
+    </style>
+    <body>
+    <!-- 键盘码不区分大小写
+    回车13 ctrl:17  shift:16  alt:18  a:65  左上右下：37 38 39 40-->
+
+    <!-- <input type="text" value=""> -->
+    <!-- <textarea name="" id="" cols="30" rows="10" value='气死了'></textarea> -->
+   <!--  <div class="box" contenteditable="true">你好啊</div> --> <!-- //文本编辑 -->
+
+    <div class="content">
+        <p>留言板</p>
+	    <div class="edit">
+	    	<textarea name="" id="" cols="30" rows="10" maxlength='100'></textarea>
+	    	<button>评论</button>
+	    	<div class="message">
+	    		最大能输入100个字符，你还能输入<span>100</span>个字符
+	    	</div>
+	    	
+	    </div>
+    	<ul  class="comment">
+    		<li>留言板为空，快来踩踩吧！</li>
+    	</ul>
+    </div>
+    </body>
+</html>
+<script src='functions.js'></script>
+<script src='blog.js'>
+  
+
+	/*document.onkeydown=function(e){
+		// console.log(e.keyCode);  /键盘码
+	}*/
+   
+</script>
