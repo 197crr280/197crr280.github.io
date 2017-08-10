@@ -1,292 +1,637 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <title>个人主页</title>
-    <link rel="stylesheet" href="css/jquery.fullPage.css">
-    <link rel="stylesheet" href="css/sgh.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="font/iconfont.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.fullPage.min.js"></script>
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <script src="js/swiper.min.js"></script>
-    <script>
-        $(document).ready(function() {
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>MERA Personal Portfolio Template</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- ANIMATE  CSS -->
+    <link href="assets/css/animate.css" rel="stylesheet" />
+    <!-- PRETTY PHOTO  CSS -->
+    <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
+    <!--  STYLE SWITCHER CSS -->
+    <link href="assets/css/styleSwitcher.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!--PINK STYLE VERSION IS BY DEFAULT, USE ANY ONE STYLESHEET FROM FOUR STYLESHEETS (pink,green,blue and brown) HERE-->
+    <link href="assets/css/themes/pink.css" id="mainCSS" rel="stylesheet" />
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
 
-            $.fn.fullpage({
-                slidesColor: ['rgba(0,0,0,0.8)', '#EAEAEA', '#FDF6E1', '#F3F3F3', '#F9F3DC'],
-                anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
-                menu: '#menu',
-                afterRender: function(){
-                    $('.screen-main span').each(function(){
-                        var $rel = $(this).attr('rel');
-                        var $arr = $rel.split(',');
-                        $(this).animate({
-                            left: $arr[2] + 'px',
-                            top: $arr[3] + 'px'
-                        }, 500);
-                    });
-                    $('.inner a').each(function(){
-                        var $rel = $(this).attr('rel');
-                        var $arr = $rel.split(',');
-                        $(this).animate({
-                            left: $arr[0] + 'px',
-                            top: $arr[1] + 'px'
-                        }, 500);
-                    });
-                },
-                afterLoad: function(anchorLink, index){
-                    if(index == 1){
-
-                        $('.screen-main span').each(function(){
-                            var $rel = $(this).attr('rel');
-                            var $arr = $rel.split(',');
-                            $(this).animate({
-                                left: $arr[2] + 'px',
-                                top: $arr[3] + 'px'
-                            }, 500);
-                        });
-                    }
-                    if(index == 2 || index == 3 || index == 4 ){
-
-                            $('.bar-inner:eq(0)').delay(200).animate({"width":"90%"})
-                            $('.bar-inner:eq(1)').delay(200).animate({"width":"80%" })
-                            $('.bar-inner:eq(2)').delay(200).animate({"width":"85%" })
-
-                               $('.line:eq(0)').delay(200).dequeue().animate({"width":"300" })
-                               $('.line:eq(1)').delay(200).dequeue().animate({"height":"300" })
-                               $('.line:eq(2)').delay(200).dequeue().animate({"width":"300" })
-                               $('.line:eq(3)').delay(200).dequeue().animate({"height":"300" })
-
-
-
-                        $('.inner').eq(index - 2).find('a').each(function(){
-                            var $rel = $(this).attr('rel');
-                            var $arr = $rel.split(',');
-                            $(this).animate({
-                                left: $arr[2] + 'px',
-                                top: $arr[3] + 'px'
-                            }, 500);
-                        });
-                    }
-                    if(index == 5){
-                        $('.zanzhu a').fadeIn(1000);
-                    }
-                },
-                onLeave: function(index, direction){
-                    if(index == 1){
-                        $('.screen-main span').each(function(){
-                            var $rel = $(this).attr('rel');
-                            var $arr = $rel.split(',');
-                            $(this).animate({
-                                left: $arr[0] + 'px',
-                                top: $arr[1] + 'px'
-                            }, 500);
-                        });
-                    }
-                    if(index == 2 || index == 3 || index == 4 ){
-
-                            $('.line:eq(0)').delay(200).dequeue().animate({"width":"0" })
-                            $('.line:eq(1)').delay(200).dequeue().animate({"height":"0" })
-                            $('.line:eq(2)').delay(200).dequeue().animate({"width":"0" })
-                            $('.line:eq(3)').delay(200).dequeue().animate({"height":"0" })
-
-
-                        $('.bar-inner').css({"width":"0%" })
-                        $('.inner').eq(index - 2).find('a').each(function(){
-                            var $rel = $(this).attr('rel');
-                            var $arr = $rel.split(',');
-                            $(this).animate({
-                                left: $arr[0] + 'px',
-                                top: $arr[1] + 'px'
-                            }, 500);
-                        });
-                    }
-                    if(index == 5){
-                        $('.zanzhu a').fadeOut(1000);
-                    }
-                }
-            });
-        });
-    </script>
 </head>
-
 <body>
+       
+    <div class="switcher" style="left:-50px;">
+        <a id="switch-panel" class="hide-panel">
+            <i class="fa fa-desktop"></i>
 
-<ul id="menu">
-    <li data-menuanchor="page1" class="active"><a href="#page1"><em>TOP</em></a></li>
-    <li data-menuanchor="page2"><a href="#page2"><em>Resume</em></a></li>
-    <li data-menuanchor="page3"><a href="#page3"><em>Works</em></a></li>
-    <li data-menuanchor="page4"><a href="#page4"><em>About</em></a></li>
-    <li data-menuanchor="page5"><a href="#page5"><em>Contact</em></a></li>
-</ul>
-
-<div class="section section1">
-    <div class="mask"></div>
-    <div class="screen-main">
-
-       <span class="ji1"  rel="-328,-589,400,360">姓名：</span>
-        <span class="ji2"  rel="1648,-487,530,360">畅润瑞</span>
-        <span class="year2"  rel="1686,-213,420,430">我的宣言：</span>
-        <span class="year0"  rel="-266,-189,600,440">只有不用心的人，没有做不成的事</span>
-        <div class="welcome-text">
-            <div class=" animated fadeInDownBig" id="title"><h2 >Hello, Welcome to <strong>RECTANGLE</strong></h2></div>
-            <div  class=" animated fadeIn"><p>Rectangle is free mobile template brought to you by template mo.com website. You can download, edit and use this layout for any purpose. Please tell your friends about our website. Thank you.</p>
-            </div>
-        </div>
-        <div class="grtx animated slideInLeft"></div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="social-inner inner">
-        <a class="soiteml so1" href="javascript:void(0)" rel="450,-175,450,21">RESUME</a>
-        <div class="jianshao">
-            <ul>
-                <li class="line"></li>
-                <li class="line"></li>
-                <li class="line"></li>
-                <li class="line"></li>
-            </ul>
-            <section class="res">
-                <div class="res_text">
-                    <h4>CSS College Larkana</h4>
-                    <em>
-                        <span>Masters Degree</span>
-                        <span>2013-2017</span>
-                    </em>
-                   <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp; ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
-                    </p>
-                    <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
-                    </p>
-                    <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;  Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
-                    </p>
-                    <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore ocurreret lam, agam ipsum meliore quo ut.
-                    </p>
-
-                </div>
-            </section>
-        </div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="famous-inner inner">
-        <a class="faitemr fa1" href="html/fk/html.html"  rel="90,-180,90,28">凡客</a>
-        <a class="faitemr fa2" href="html/xm/xiaomi.html" rel="90,-180,90,53">小米</a>
-        <a class="faitemr fa3" href="html/tm/tianmao.html"  rel="0,-180,70,73">天猫</a>
-        <a class="faiteml fa1" href="html/geren/index.html"  rel="1280,203,90,140">个人主页</a>
-
-        <a class="faiteml fa5" href="html/dzyx/dz.html" rel="1280,227,335,227">打字小游戏</a>
-        <a class="faiteml fa6" href="html/puke/puke.html" rel="1080,290,255,280">扑克牌</a>
-        <a class="faiteml fa7" href="html/other/五子棋.html" rel="-300,317,160,307,">五子棋</a>
-
-        <a class="faiteml fa8"  href="html/music/yinyue.html" rel="-300,533,149,540">音乐</a>
-        <a class="faiteml fa9" href="html/canvas/hb.html" rel="-300,563,149,568">画板</a>
-
-
-        <a class="faimg1 fmg" href="html/tm/tianmao.html" rel="200,-180,200,10"><img width="169" height="169" src="images/3.png"><div class="btn">天猫</div></a>
-        <a class="faimg2 fmg" href="html/puke/puke.html" rel="980,77,550,77"><img width="284" height="211" src="images/1.png"><div class="btn">扑克游戏</div></a>
-        <a class="faimg3 " href="javascript:void(0)" rel="980,366,450,366"><img width="491" height="328" src="images/xiaohuangren.png"></a>
-        <a class="faimg4 fmg" href="html/music/yinyue.html" rel="-300,387,149,387"><img width="160" height="136" src="images/2.png"><div class="btn">音乐</div></a>
-    </div>
-</div>
-
-<div class="section">
-    <div class="science-inner inner">
-        <a class="stiteml st4" href="javascript:void(0)" rel="0,-350,0,68">
-            <div class="box"style="width:948px;height:auto;margin-left:20px;margin-top: -20px">
-                <div class="about-text">
-                   <div class="animated fadeInDownBig "id="about"> <h3>ABOUT ME.</h3></div>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;I'm a passionate designer, ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore <br> et dolore magna aliqua. In 2015, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        <br> Duis aute irure dolor in reprehe in voluptate velit esse cillum dolore eu.</p>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;I'm a passionate designer, ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore <br> et dolore magna aliqua. In 2015, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        <br> Duis aute irure dolor in reprehe in voluptate velit esse cillum dolore eu.</p>
-                </div>
-                <!-- Skills -->
-                <div class="skills">
-                    <div class="single-progress-item">
-                        <h4>HTML</h4>
-                        <div class="progress-bar-style" data-progress="90"><div class="bar-inner" style="width:0%;"><span>90%</span></div></div>
-                    </div>
-                    <div class="single-progress-item">
-                        <h4>Javascript</h4>
-                        <div class="progress-bar-style" data-progress="80"><div class="bar-inner" style="width:0%"><span>80%</span></div></div>
-                    </div>
-                    <div class="single-progress-item">
-                        <h4>jQuery</h4>
-                        <div class="progress-bar-style" data-progress="85"><div class="bar-inner" style="width:0%"><span>85%</span></div></div>
-                    </div>
-
-                </div>
-
-            </div>
         </a>
-    </div>
+        <p style="font-size:10px">choose</p>
+        <ul class="colors-list">
+            <li><a title="Pink" id="pink" class="pink" ></a></li>
+            <li><a title="Green" id="green" class="green" ></a></li>
+            <li><a title="Blue" id="blue" class="blue" ></a></li>
+             <li><a title="Brown" id="brown" class="brown" ></a></li>
+           
+        </ul>
+    </div>	
+    <!-- /. END THEME SWITCHER-->
 
-</div>
-
-
-
-<div class="section">
-    <div class="zanzhu">
-        <section class="contact-section spad" id="contact">
-
-                <div class="section-title">
-                   <h2> <a href="javascript:void(0)">GET IN TOUCH</a></h2>
-                    <p><a href="javascript:void(0)">Out believe has request not how comfort evident. Up delight cousins we feeling minutes. Genius has looked end piqued spring.Out believe has request not how comfort evident. Up delight cousins we feeling minutes. Genius has looked end piqued spring.</a></p>
-                </div>
-                <div class="row">
-                    <div class="col-l-5 col-m-5 col-s-6 col-xs-12">
-                        <ul class="con-info"><a href="">
-                            <li>
-                                <i class="iconfont icon-dianhua"></i>
-                                <span>Phone</span>
-                                <p>+1 (123) 456-7890</p>
-                            </li>
-                            <li>
-                                <i class="iconfont icon-email1"></i>
-                                <span>Email</span>
-                                <p>domain@gmail.com</p>
-                            </li>
-                            <li   class="rmargin-b">
-                                <i class="iconfont icon-ditu"></i>
-                                <span>Address</span>
-                                <p>A902, Crosswinds Apt, Western Road,<br> Brighton, East Sussex, Bath</p>
-                            </li></a>
-                        </ul>
+    <div id="home-sec">
+        <div class="overlay">
+            <div class="container">
+                <div class="row pad-top-bottom  move-me">
+                    <div class="col-lg-5 col-md-5 col-sm-5 text-center  person">
+                        <img src="assets/img/1.jpg" class="main-img img-circle wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s" alt=""/>
+                        <div>
+                        <h1 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">畅润瑞</h1>
+                        <h2 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".6s">前端工程师</h2>
+                        </div>
+                            <a href="#about-sec" class="btn custom-btn-one btn-lg wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">EXPLORE MYSELF</a>
                     </div>
-                    <div class="col-l-7 col-m-7 col-s-6 col-xs-12 contact-left">
-                        <div id="form-chack"></div>
-                        <!-- Contact Form -->
-                        <form action="mail.php" id="contact-form" method="POST">
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center icon-so ">
+                        <a href="#about-sec" class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".1s">
+                            <i class="fa fa-info icon-round icon-round-active"></i>
+                            <h3 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">ABOUT ME</h3>
+                        </a>
+                        <a href="#resume-sec" class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".3s">
+                            <i class="fa fa-briefcase icon-round"></i>
+                            <h3 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">RESUME</h3>
+                        </a>
+                        <a href="#portfolio-sec" class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".5s">
+                            <i class="fa fa-recycle icon-round icon-round-active"></i>
+                            <h3 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".6s">PORTFOLIO </h3>
+                        </a>
+                        <a href="#hire-sec" class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".7s">
+                            <i class="fa fa-paper-plane-o icon-round"></i>
+                            <h3 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">HIRE ME</h3>
+                        </a>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 text-center">
+                        <img src="assets/img/1.jpg" class="main-img-2 main-img img-circle wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s" alt="" />
+                        <h1 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">EXPERIENCE OF</h1>
+                        <h2 class="wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".6s">2+ YEARS</h2>
+                        <a href="#resume-sec" class="btn custom-btn-one btn-lg wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">CONTACT ME</a>
+                    </div>
+                </div>
 
-                            <input type="text" name="name" id="name" required="" placeholder="Your Name*">
+            </div>
+        </div>
+    </div>
+    <!-- HOME SECTION END-->
+    <section id="about-sec">
+        <div class="container">
+            <div class="row">
+                <div class="about" id="about">
+                    <div class="wrap">
+                        <h3><font><font>我的成长经历</font></font></h3>
+                        <p class="a"><font><font>My growth experience</font></font></p>
+                        <!---start-about-time-line---->
+                        <div class="about-time-line">
+                                <div class="cbp_tmicon img1"> </div>
+                                <div class="cbp_tmlabel">
+                                    <h2><font><font>START</font></font></h2>
+                                    <p><font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt。</font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit。</font></font></p>
+                                </div>
+                                <div class="cbp_tmicon1 img2"> </div>
+                                <div class="cbp_tmlabel cbp_tmlabel1">
+                                    <h2><font><font>GROWTH</font></font></h2>
+                                    <p><font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt。</font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt。</font></font></p>
+                                </div>
 
-                            <input type="email" name="email" id="email" required="" placeholder="Your Email*">
+                                <div class="cbp_tmicon2 img3"> </div>
+                                <div class="cbp_tmlabel cbp_tmlabel2">
+                                    <h2><font><font>TROUBLE</font></font></h2>
+                                    <p><font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt。</font><font>Proin iaculis purus due sem sem cure digni。</font></font></p>
+                                </div>
+                                <div class="cbp_tmicon3 img4"> </div>
+                                <div class="cbp_tmlabel cbp_tmlabel3">
+                                    <h2><font><font>SUCCESS</font></font></h2>
+                                    <p><font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt。</font><font>Proin iaculis purus due sem sem cure digni ssim。</font><font>Donec porttitora entum suscipit aenean。</font></font></p>
+                                </div>
 
-                            <div class="send-btn-div">
-                                <textarea id="massage" name="massage" required="" placeholder="Your Massage*"></textarea>
-                                <button type="submit" class="send-btn"><i class="iconfont icon-iconfontfasong"></i></button>
+                                <div class="cbp_tmicon4 img5"> </div>
+                            <div class="clear"> </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-lg-4 col-md-4 col-sm-4 wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">-->
+                    <!--<h1>WHAT TO KNOW</h1>-->
+                    <!--<h1>ABOUT ME ?</h1>-->
+                    <!--<div class="color-strip"></div>-->
+                    <!--<div class="social-icon">-->
+                        <!--<a href="#">-->
+                            <!--<img src="assets/img/Social/facebook.png" alt="" /></a>-->
+                        <!--<a href="#">-->
+                            <!--<img src="assets/img/Social/google-plus.png" alt="" /></a>-->
+                        <!--<a href="#">-->
+                            <!--<img src="assets/img/Social/twitter.png" alt="" /></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-8 col-md-8 col-sm-8 wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">-->
+                    <!--<p>-->
+                        <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                      <!--Nulla pretium lectus vel justo iaculis blandit.-->
+                       <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                      <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                      <!--Nulla pretium lectus vel justo iaculis blandit.-->
+                       <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                       <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                    <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                      <!--Nulla pretium lectus vel justo iaculis blandit.-->
+                       <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                   <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                      <!--Nulla pretium lectus vel justo iaculis blandit.-->
+                       <!--Nulla facilisi. In hac habitasse platea dictumst.-->
+                    <!--</p>-->
+                <!--</div>-->
+            </div>
+
+
+
+        </div>
+    </section>
+    <!-- ABOUT SECTION END-->
+    <section id="skill-sec">
+        <div class="overlay">
+            <div class="container">
+                <div class="skill_title">MY SKILL</div>
+                <div class="row pad-top-bottom move-me skill">
+                    <div class="skill-one">
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">
+                        <span class="chart" data-percent="90">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>HTML </h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">
+                        <span class="chart" data-percent="85">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>CSS</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">
+                        <span class="chart" data-percent="90">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>JAVASCRIPT</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">
+                        <span class="chart" data-percent="90">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>JQUERY</h4>
+                    </div>
+                    </div>
+                    <div class="skill-one">
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center  wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".6s">
+                        <span class="chart" data-percent="85">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>PHP </h4>
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">
+                        <span class="chart" data-percent="85">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>React</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">
+                        <span class="chart" data-percent="80">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>Vue</h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">
+                        <span class="chart" data-percent="80">
+                            <span class="percent"></span>
+                        </span>
+                        <h4>NodeJS</h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SKILL SECTION END-->
+
+    <!-- TESTIMONIAL SECTION END-->
+    <section id="portfolio-sec">
+        <div class="container">
+            <div class="row text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 text-center">
+                    <h1>RECENT PROJECTS</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                </div>
+            </div>
+            <div class="row  wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/qi.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="assets/five.html">五子棋 </a></h3>
+                                <p>查看详情</p>
+                                <a class="preview"  href="assets/img/portfolio/small/qi.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
 
-        </section>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/boot.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="https://197crr280.github.io/geren">响应式 </a></h3>
+                                <p>查看详情</p>
+                                <a class="preview"  href="assets/img/portfolio/small/boot.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/font.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="assets/dzyx/dz.html">打字游戏 </a></h3>
+                                <p>查看详情 </p>
+                                <a class="preview" href="assets/img/portfolio/small/font.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/puck.png" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="assets/puke/puke.html">扑克牌</a></h3>
+                                <p>查看详情 </p>
+                                <a class="preview" href="assets/img/portfolio/small/puck.png"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/canver.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="assets/canvas/hb.html">画板</a></h3>
+                                <p>查看详情</p>
+                                <a class="preview" href="assets/img/portfolio/small/canver.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/ktv.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="https://crrktv.duapp.com">方糖KTV</a></h3>
+                                <p>查看详情</p>
+                                <a class="preview" href="assets/img/portfolio/small/ktv.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/1.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="https://crrnodenews.duapp.com">今日新闻 </a></h3>
+                                <p>查看详情</p>
+                                <a class="preview" href="assets/img/portfolio/big/1.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/blog.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href=" https://197crr280.github.io/blog/">博客</a></h3>
+                                <p>查看详情</p>
+                                <a class="preview" href="assets/img/portfolio/small/blog.jpg"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">
+                    <div class="portfolio-sec-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/small/travel1.jpg" alt="" />
+                        <div class="overlay">
+                            <div class="portfolio-sec-inner">
+                                <h3><a href="https://crrnews.duapp.com">遇见旅拍</a></h3>
+                                <p>查看详情</p>
+                                <a class="preview" href="assets/img/portfolio/big/travel2.png"><i class="fa fa-eye"></i>SEE PROJECT </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  ">-->
+                    <!--<div class="portfolio-sec-wrap">-->
+                        <!--<img class="img-responsive" src="assets/img/portfolio/small/gift.jpg" alt="" />-->
+                        <!--<div class="overlay">-->
+                            <!--<div class="portfolio-sec-inner">-->
+                                <!--<h3><a href="#">礼物说</a></h3>-->
+                                <!--<p>查看详情</p>-->
+                                <!--<a class="preview" href=""><i class="fa fa-eye"></i>SEE PROJECT </a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION END-->
+    <section id="hire-sec">
+    <div class="container">
+    <div class="row  move-me">
+    <!--<div class="col-lg-4 col-md-4 col-sm-4 wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">-->
+    <!--<h1>DOWNLOAD </h1>-->
+    <!--<h1>RESUME</h1>-->
+    <!--<div class="color-strip"></div>-->
+    <!--<a href="#resume-sec" class="btn btn-style-three ">DOWNLOAD RESUME (.txt file)</a>-->
+    <!--</div>-->
+    <!--<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>-->
+    <div class="col-lg-12 col-md-8 col-sm-8 wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">
+    <div class="board">
+    <div class="board-inner">
+    <ul class="nav nav-tabs" id="myTab">
+    <li class="active">
+    <a href="#home" data-toggle="tab" title="PERSONAL DETAILS">
+    <span class="round-tabs one">
+    <i class="fa fa-home"></i>
+    </span>
+    </a></li>
+
+    <li><a href="#profile" data-toggle="tab" title="EDUCATIONAL PROFILE">
+    <span class="round-tabs two">
+    <i class="fa fa-briefcase"></i>
+    </span>
+    </a>
+    </li>
+    <li><a href="#exp" data-toggle="tab" title="EXPERIENCE DETAILS">
+    <span class="round-tabs three">
+    <i class="fa fa-recycle"></i>
+    </span></a>
+    </li>
+
+    <li><a href="#location" data-toggle="tab" title="PRESENT LOCATION">
+    <span class="round-tabs four">
+    <i class="fa fa-paper-plane-o"></i>
+    </span>
+    </a></li>
+
+    <li><a href="#contact" data-toggle="tab" title="CONTACT ME">
+    <span class="round-tabs five">
+    <i class="fa fa-comments-o"></i>
+    </span></a>
+    </li>
+
+    </ul>
     </div>
-</div>
+
+    <div class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+
+    <h4 class="head text-center">PERSONAL DETAILS</h4>
+    <p class="narrow text-center">
+    <span>
+    <i>姓名 : </i>畅润瑞
+    </span>
+    <span>
+    <i>年龄 :</i>22 岁
+    </span>
+    <span>
+    <i>现居住地:</i>浙江杭州
+    </span>
+        <span>
+    <i>兴趣爱好:</i>旅游 听音乐
+    </span>
+    </p>
 
 
+    </div>
+    <div class="tab-pane fade" id="profile">
+
+    <h4 class="head text-center">EDUCATIONAL PROFILE</h4>
+    <p class="narrow text-center">
+    <span>
+    <i>所学专业 : </i>计算机科学与技术
+    </span>
+    <span>
+    <i>学历  : </i>本科
+    </span>
+    <span>
+    <i>证书  :</i>英语四级 ACAA全栈工程师
+    </span>
+    </p>
+    </div>
+    <div class="tab-pane fade" id="exp">
+    <h4 class="head text-center">EXPERIENCE DETAILS</h4>
+    <p class="narrow text-center">
+    <span>
+    <i>MICROSOFT  : </i>2013 - TILL DATE  as SR. UI DESIGNER
+    </span>
+    <span>
+    <i>MAYA ANIMATIONS : </i>2010 - 2013 as UI DESIGNER
+    </span>
+    <span>
+    <i>JALSON CREATIVES :</i>2009 - 2010 as DEVELOPER.
+    </span>
+    </p>
+    </div>
+    <div class="tab-pane fade" id="location">
+    <h4 class="head text-center">PRESENT LOCATION </h4>
+    <p class="narrow text-center">
+    <span>
+    <i>LOCALITY </i>243/90 - NEW YORK STREET
+    </span>
+    <span>
+    <i>COUNTRY </i>UNITED STATES OF AMERICA
+    </span>
+    <span>
+    <i>PIN </i>345-908-00
+    </span>
+    </p>
+    </div>
+    <div class="tab-pane fade" id="contact">
+    <h4 class="head text-center">CONTACT ME </h4>
+
+    <p class="narrow text-center">
+    <span>
+    <i>邮箱： </i>crrweb6186.163.com
+    </span>
+    <span>
+    <i>手机： </i>18435106186
+    </span>
+    <span>
+    <i>QQ： </i>851460347
+    </span>
+    </p>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </section>
+
+
+    <!--<section id="testimonial-main">-->
+        <!--<div class="overlay">-->
+            <!--<div class="container">-->
+                <!--<div class="row pad-top-bottom wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">-->
+                    <!--<div class="col-lg-12 col-md-12 col-sm-12 text-center">-->
+                        <!--<h1>CLIENT ESTIMONIALS</h1>-->
+
+                        <!--<div id="testimonials" class="carousel slide" data-ride="carousel">-->
+
+                            <!--<ol class="carousel-indicators">-->
+                                <!--<li data-target="#testimonials" data-slide-to="0" class=""></li>-->
+                                <!--<li data-target="#testimonials" data-slide-to="1" class="active"></li>-->
+                                <!--<li data-target="#testimonials" data-slide-to="2" class=""></li>-->
+                            <!--</ol>-->
+
+                            <!--<div class="carousel-inner">-->
+                                <!--<div class="item">-->
+                                    <!--<div class="container center">-->
+                                        <!--<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">-->
+
+                                            <!--<h4><i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum. <i class="fa fa-quote-right"></i></h4>-->
+                                            <!--<div class="user-img pull-right">-->
+                                                <!--<img src="assets/img/user2.png" alt="" class="img-circle image-responsive" />-->
+                                            <!--</div>-->
+                                            <!--<h5 class="pull-right">Lorem Dolor</h5>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="item active">-->
+                                    <!--<div class="container center">-->
+                                        <!--<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">-->
+                                            <!--<h4><i class="fa fa-quote-left"></i>Aenean faucibus luctus enim. Duis quis sem risu suspend lacinia elementum nunc. <i class="fa fa-quote-right"></i></h4>-->
+                                            <!--<div class="user-img pull-right">-->
+                                                <!--<img src="assets/img/user.gif" alt="" class="img-circle image-responsive" />-->
+                                            <!--</div>-->
+                                            <!--<h5 class="pull-right">Faucibus luctus</h5>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="item">-->
+                                    <!--<div class="container center">-->
+                                        <!--<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">-->
+                                            <!--<h4><i class="fa fa-quote-left"></i>Sed ultricies, libero ut adipiscing fringilla, ante elit luctus lorem, a egestas dui metus a arcu condimentum. <i class="fa fa-quote-right"></i></h4>-->
+                                            <!--<div class="user-img pull-right">-->
+                                                <!--<img src="assets/img/user2.png" alt="" class="img-circle image-responsive" />-->
+                                            <!--</div>-->
+                                            <!--<h5 class="pull-right">Sed ultricies</h5>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+    <!-- RESUME SECTION END-->
+    <!--<section id="hire-sec">-->
+        <!--<div class="overlay">-->
+            <!--<div class="container">-->
+                <!--<div class="row text-center pad-top-bottom wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">-->
+                    <!--<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">-->
+                        <!--<h1>HIRE ME</h1>-->
+                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>-->
+                        <!--<br />-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="row  move-me wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">-->
+                    <!--<div class="col-lg-6  col-md-6  col-sm-6">-->
+                        <!--<form>-->
+                            <!--<div class="form-group">-->
+                                <!--<input type="text" class="form-control" required="required" placeholder="Your Name" />-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<input type="text" class="form-control" required="required" placeholder="Your Email" />-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<textarea name="message" id="message" required="required" class="form-control" style="min-height: 100px;" placeholder="Message"></textarea>-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<a href="#hire-sec" class="btn custom-btn-one ">CONTACT ME</a>-->
+                            <!--</div>-->
+
+                        <!--</form>-->
+                    <!--</div>-->
+                    <!--<div class="col-lg-4 col-lg-offset-1  col-md-4  col-md-offset-1 col-sm-4 col-sm-offset-1" id="footer-sec">-->
+                        <!--<h3><strong>MY LOCATION </strong></h3>-->
+                        <!--<p>浙江省杭州市</p>-->
+
+                        <!--<p><i>MOBILEPHONE :</i> 18435106186</p>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+    <!-- HIRE SECTION END-->
+    <div class="move-me">
+        <a href="#home-sec" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+    </div>
+    <!-- SCROLL TO TOP SECTION END-->
+    <!--  JQUERY CORE SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!--  BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!--  SCROLL SCRIPTS -->
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <!--  WOW ANIMATION SCRIPTS -->
+    <script src="assets/js/wow.min.js"></script>
+    <!-- EASY PIE CHART SCRIPTS -->
+    <script src="assets/js/jquery.easypiechart.min.js"></script>
+    <!-- PRETTY PHOTO SCRIPTS -->
+    <script src="assets/js/jquery.prettyPhoto.js"></script>
+    <!--  STYLE SWITCHER SCRIPTS -->
+    <script src="assets/js/styleSwitcher.js"></script>
+    <!--  CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    
 </body>
 </html>
